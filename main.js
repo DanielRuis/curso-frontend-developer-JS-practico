@@ -39,3 +39,67 @@ function toggleCarrito(){
     }
 
 }
+
+//*Seccion donde se trabaja con las tajetas
+const contenedor=document.querySelector(".cards-container")
+const productList= [];
+productList.push(
+    {
+        name: 'Bike',
+        price: 500,
+        image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    }
+);
+productList.push(
+    {
+        name: 'iPhone',
+        price: 600,
+        image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    }
+);
+productList.push(
+    {
+        name: 'Xbox',
+        price: 900,
+        image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    }
+);
+for (product of productList){
+
+    //?Se crea el primer div
+    const productCard=document.createElement("div");
+    productCard.classList.add('product-card');
+    const img = document.createElement("img");
+    img.setAttribute("src", product.image);
+
+    
+
+
+    //?Se crea el segundo div
+    const productInfo=document.createElement("div");
+    productInfo.classList.add('product-info');
+
+    
+
+
+    //?Se crea el tercer div-
+    const productInfo2=document.createElement("div");
+    //En esta parte ya empezamos a mostrar los datos
+    const productPrice=document.createElement('p');
+    productPrice.innerText='$'+product.price;
+    const productName=document.createElement('p');
+    productName.innerText=product.name;
+
+    productInfo2.append(productPrice,productName);
+
+
+    //?Creamos el div del figure-
+    const productInfoFigure=document.createElement('figure');
+    const productImgCar=document.createElement('img');
+    productImgCar.setAttribute('src', "./icons/bt_add_to_cart.svg");
+
+    productInfoFigure.appendChild(productImgCar);//*Aqui añadimos pIC dentro de pIF
+    productInfo.append(productInfo2,productInfoFigure);
+    productCard.append(img,productInfo);
+    contenedor.appendChild(productCard);
+}
